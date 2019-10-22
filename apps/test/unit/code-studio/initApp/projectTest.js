@@ -477,7 +477,7 @@ describe('project.js', () => {
 
   describe('setLibraryName()', () => {
     it('updates the current library name', () => {
-      let oldName = 'initialLibrary';
+      let oldName = 'initialLibraryName';
       let newName = 'newLibraryName';
       setData({libraryName: oldName});
       sinon.stub(project, 'updateChannels_');
