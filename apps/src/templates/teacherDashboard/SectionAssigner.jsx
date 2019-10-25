@@ -1,50 +1,86 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import i18n from '@cdo/locale';
 import {sectionForDropdownShape} from './shapes';
 import TeacherSectionSelector from './TeacherSectionSelector';
-import AssignedButton from '@cdo/apps/templates/AssignedButton';
 import AssignButton from '@cdo/apps/templates/AssignButton';
+import UnassignButton from '@cdo/apps/templates/UnassignButton';
+import {selectSection} from '@cdo/apps/templates/teacherDashboard/teacherSectionsRedux';
 
 const styles = {
-  main: {
+  content: {
     display: 'flex'
+  },
+  label: {
+    width: '100%',
+    fontSize: 16,
+    fontFamily: '"Gotham 5r", sans-serif',
+    paddingTop: 10,
+    paddingBottom: 10
   }
 };
 
-export default class SectionAssigner extends Component {
+class SectionAssigner extends Component {
   static propTypes = {
     sections: PropTypes.arrayOf(sectionForDropdownShape).isRequired,
-    initialSelectedSection: PropTypes.object
-  };
-
-  state = {
-    selectedSection: this.props.initialSelectedSection
+    selectSection: PropTypes.func.isRequired,
+    showAssignButton: PropTypes.bool,
+    courseId: PropTypes.number,
+    selectedSectionId: PropTypes.number,
+    assignmentName: PropTypes.string
   };
 
   onChangeSection = sectionId => {
-    const {sections} = this.props;
-    const selectedSection = sections.find(section => section.id === sectionId);
-    this.setSelectedSection(selectedSection);
-  };
-
-  setSelectedSection = section => {
-    this.setState({selectedSection: section});
+    this.props.selectSection(sectionId);
   };
 
   render() {
-    const {sections} = this.props;
-    const {selectedSection} = this.state;
+    const {
+      sections,
+      showAssignButton,
+      courseId,
+      assignmentName,
+      selectedSectionId
+    } = this.props;
+    const selectedSection = sections.find(
+      section => section.id === selectedSectionId
+    );
 
     return (
-      <div style={styles.main}>
-        <TeacherSectionSelector
-          sections={sections}
-          onChangeSection={this.onChangeSection}
-          selectedSection={selectedSection}
-        />
-        {selectedSection.isAssigned && <AssignedButton />}
-        {!selectedSection.isAssigned && <AssignButton />}
+      <div>
+        <div style={styles.label}>{i18n.currentSection()}</div>
+        <div style={styles.content}>
+          <TeacherSectionSelector
+            sections={sections}
+            onChangeSection={this.onChangeSection}
+            selectedSection={selectedSection}
+          />
+          {selectedSection.isAssigned && (
+            <UnassignButton sectionId={selectedSection.id} />
+          )}
+          {!selectedSection.isAssigned && showAssignButton && (
+            <AssignButton
+              section={selectedSection}
+              courseId={courseId}
+              assignmentName={assignmentName}
+            />
+          )}
+        </div>
       </div>
     );
   }
 }
+
+export const UnconnectedSectionAssigner = SectionAssigner;
+
+export default connect(
+  state => ({
+    selectedSectionId: parseInt(state.teacherSections.selectedSectionId)
+  }),
+  dispatch => ({
+    selectSection(sectionId) {
+      dispatch(selectSection(sectionId));
+    }
+  })
+)(SectionAssigner);

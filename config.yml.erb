@@ -264,6 +264,8 @@ use_my_apps:
 
 optimize_webpack_assets: true
 
+optimize_rails_assets: true
+
 # Allows your local server to render non-English locales, defaults to false in development.
 # If false, choosing a locale other than English will have no effect.
 # Note: You may need to be in an incognito window to see changes
@@ -435,6 +437,7 @@ devinternal_db_writer: !Secret
 db_cluster_id:
 db_admin: !Secret
 reporting_db_admin:
+db_proxy_admin:
 
 db_writer: !Secret
 reporting_db_writer: <%=db_writer%>
