@@ -360,7 +360,7 @@ uk:
       Dancelab_setBackgroundEffectWithPalette:
         text: |-
           встановити ефект тла
-          {EFFECT} {PALETTE}
+          {PALETTE} {EFFECT}
         options:
           EFFECT:
             '"rand"': "(Випадковий)"
@@ -856,6 +856,8 @@ uk:
           {DO1} {DO2}
       Mikelab_randomColor:
         text: випадковий колір
+      Mikelab_repeatUntilComplete:
+        text: повторювати завжди
       Mikelab_setBG:
         options:
           BG:

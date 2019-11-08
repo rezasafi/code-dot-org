@@ -4028,11 +4028,6 @@ tr-TR:
         tekrar kapatmanın imkanı yoktur!\\\r\n\\\r\n\n# Bunu Yap\\\r\n\n\\\r\nTüm
         LED'leri kapayan\nbir fonksiyon oluşturun ve sonra uygulamanıza bir \"Kapalı\"
         butonu ekleyin ve tüm renkli LED'leri kapatmasını sağlayın."
-      CSD U6 light pattern off_2019: "# Işığı Kapamak\\\r\n\n\\\r\nBu\nuygulamayı
-        başlattığınızda ışıklar kapalıdır ama siz bir desen seçer seçmez, ışıkları
-        tekrar kapatmanın imkanı yoktur!\\\r\n\\\r\n\n# Bunu Yap\\\r\n\n\\\r\nTüm
-        LED'leri kapayan\nbir fonksiyon oluşturun ve sonra uygulamanıza bir \"Kapalı\"
-        butonu ekleyin ve tüm renkli LED'leri kapatmasını sağlayın."
       CSD U6 params starchaser intro: "# Yıldız Kovalayan\\\r\n\n\\\r\nBu\noyunda,
         kullanıcı yıldızları LED'lerin rengine göre yakalamaya çalışır.\\\r\n\\\r\n\n#
         Bunu Yap\\\r\n\n-   Oyunu oynayın ve aşağıdakileri bir takım arkadaşınızla

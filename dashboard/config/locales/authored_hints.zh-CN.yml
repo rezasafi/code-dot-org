@@ -6933,9 +6933,6 @@ zh-CN:
       courseC_collector_prog_challenge2_2019:
         courseC_collector_prog_challenge1_a: 你可以使用多个`收集`命令来收集额外的宝藏。
         courseC_collector_prog_challenge1_b: 迷路了？ 请尝试此路径来通过这个关卡!
-      courseC_data wizard:
-        courseA_playLab_events7_a: "使用此块来控制当演员碰撞时会发生什么。 \n\n<xml><block type=\"studio_whenSpriteCollided\">\n\n<title
-          name=\"SPRITE1\">1</title>\n<title name=\"SPRITE2\">0</title>\n</block></xml>"
       courseC_flappy_events1:
         courseC_flappy_events1_a: "![](https://images.code.org/52f474adbbc3bdd87aaae407c9ebf588-image-1515690462464.png)"
       courseC_flappy_events1_2018:
@@ -9108,7 +9105,6 @@ zh-CN:
           请注意, 获取所有农作物的最简单途径仍然是螺旋形。
 
           ![](https://images.code.org/ba8b8c624f21ade9ac823b045085c435-image-1479364378437.png)
-        courseD_farmer_condLoops7_b: 尝试使用`当前面有路时`使收割者移动正确的步数。
       courseD_farmer_condLoops_challenge1:
         courseD_farmer_condLoops_challenge1_a: 在这个挑战中, "步进" 按钮可能非常有用。
         courseD_farmer_condLoops_challenge1_b: 通常情况下, 如果你是在南瓜那里, 你只会`摘南瓜`。如果你在南瓜那里,

@@ -406,6 +406,8 @@ pt:
             MOVES.Rest: Nenhum
       Mikelab_randomColor:
         text: cor aleatória
+      Mikelab_repeatUntilComplete:
+        text: repetir para sempre
       Mikelab_setBG:
         options:
           BG:
