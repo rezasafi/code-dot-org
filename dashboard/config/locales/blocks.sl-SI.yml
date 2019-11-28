@@ -2,6 +2,10 @@
 sl:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: vse
       Dancelab_atTimestamp:
         options:
           UNIT:
@@ -207,6 +211,12 @@ sl:
           PROPERTY:
             '"scale"': velikost
             '"height"': višina
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"diamond"': diamant
+            '"x"': x
+            '"y"': y
       Dancelab_whenKey:
         options:
           KEY:

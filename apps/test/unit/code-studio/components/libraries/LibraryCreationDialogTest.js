@@ -3,13 +3,14 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {
   UnconnectedLibraryCreationDialog as LibraryCreationDialog,
-  LoadingState
+  PublishState
 } from '@cdo/apps/code-studio/components/libraries/LibraryCreationDialog.jsx';
 import libraryParser from '@cdo/apps/code-studio/components/libraries/libraryParser';
 import LibraryClientApi from '@cdo/apps/code-studio/components/libraries/LibraryClientApi';
 import sinon from 'sinon';
 import Spinner from '@cdo/apps/code-studio/pd/components/spinner';
 import {replaceOnWindow, restoreOnWindow} from '../../../../util/testUtils';
+import annotationList from '@cdo/apps/acemode/annotationList';
 
 const LIBRARY_SOURCE =
   '/*\n' +
@@ -48,7 +49,9 @@ describe('LibraryCreationDialog', () => {
       project: {
         setLibraryName: () => {},
         setLibraryDescription: () => {},
-        getCurrentId: () => {}
+        getCurrentId: () => {},
+        getUpdatedSourceAndHtml_: () => {},
+        getLevelName: () => {}
       }
     });
     sinon.stub(window.dashboard.project, 'setLibraryName').returns(undefined);
@@ -78,12 +81,84 @@ describe('LibraryCreationDialog', () => {
     wrapper = null;
   });
 
+  describe('onOpen', () => {
+    let getJSLintAnnotationsStub, sourceStub, functionStub;
+    let libraryName = 'name';
+    let source = 'function foo() {}';
+    beforeEach(() => {
+      getJSLintAnnotationsStub = sinon.stub(
+        annotationList,
+        'getJSLintAnnotations'
+      );
+      sourceStub = sinon.stub(
+        window.dashboard.project,
+        'getUpdatedSourceAndHtml_'
+      );
+      functionStub = sinon.stub(libraryParser, 'getFunctions');
+      sinon.stub(libraryParser, 'sanitizeName').returns(libraryName);
+      sinon.stub(window.dashboard.project, 'getLevelName').returns(libraryName);
+    });
+
+    afterEach(() => {
+      annotationList.getJSLintAnnotations.restore();
+      window.dashboard.project.getUpdatedSourceAndHtml_.restore();
+      libraryParser.getFunctions.restore();
+      libraryParser.sanitizeName.restore();
+      window.dashboard.project.getLevelName.restore();
+    });
+
+    it('sets the loading state to CODE_ERROR when a code error exists', () => {
+      getJSLintAnnotationsStub.returns([{type: 'error'}]);
+      wrapper.instance().onOpen();
+      wrapper.update();
+      expect(wrapper.state().publishState).to.equal(PublishState.CODE_ERROR);
+    });
+
+    it('sets loading state to NO_FUNCTIONS when there are no functions', () => {
+      getJSLintAnnotationsStub.returns([]);
+      sourceStub.yields({source: ''});
+      functionStub.returns([]);
+
+      wrapper.instance().onOpen();
+      wrapper.update();
+      expect(wrapper.state().publishState).to.equal(PublishState.NO_FUNCTIONS);
+    });
+
+    it('sets loading state to DONE_LOADING on success', () => {
+      getJSLintAnnotationsStub.returns([]);
+      functionStub.returns([{functionName: 'foo', comment: ''}]);
+      sourceStub.yields({source: source});
+
+      wrapper.instance().onOpen();
+      wrapper.update();
+      expect(wrapper.state().publishState).to.equal(PublishState.DONE_LOADING);
+      expect(wrapper.state().librarySource).to.equal(source);
+      expect(wrapper.state().libraryName).to.equal(libraryName);
+    });
+
+    it('prepends imported libraries to the exported source', () => {
+      let library = 'function bar() {}';
+      getJSLintAnnotationsStub.returns([]);
+      functionStub.returns([{functionName: 'foo', comment: ''}]);
+      sourceStub.yields({source: source, libraries: [library]});
+      sinon.stub(libraryParser, 'createLibraryClosure').returns(library);
+
+      wrapper.instance().onOpen();
+      wrapper.update();
+      expect(wrapper.state().publishState).to.equal(PublishState.DONE_LOADING);
+      expect(wrapper.state().librarySource).to.equal(library + source);
+      expect(wrapper.state().libraryName).to.equal(libraryName);
+
+      libraryParser.createLibraryClosure.restore();
+    });
+  });
+
   describe('UI', () => {
     it('publish is disabled when nothing checked', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.DONE_LOADING,
+        publishState: PublishState.DONE_LOADING,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -94,7 +169,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.DONE_LOADING,
+        publishState: PublishState.DONE_LOADING,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -113,7 +188,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.DONE_LOADING,
+        publishState: PublishState.DONE_LOADING,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -134,7 +209,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.DONE_LOADING,
+        publishState: PublishState.DONE_LOADING,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -150,7 +225,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.PUBLISHED,
+        publishState: PublishState.PUBLISHED,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -163,7 +238,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.LOADING,
+        publishState: PublishState.LOADING,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -174,7 +249,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.ERROR_PUBLISH,
+        publishState: PublishState.ERROR_PUBLISH,
         sourceFunctionList: libraryParser.getFunctions(LIBRARY_SOURCE)
       });
 
@@ -188,7 +263,7 @@ describe('LibraryCreationDialog', () => {
       wrapper.setState({
         libraryName: 'testLibrary',
         librarySource: LIBRARY_SOURCE,
-        loadingState: LoadingState.DONE_LOADING,
+        publishState: PublishState.DONE_LOADING,
         sourceFunctionList: functionList
       });
 

@@ -2,6 +2,45 @@
 ja:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: すべて
+            '"ALIEN"': すべてのエイリアン
+            '"BEAR"': すべてのクマ
+            '"CAT"': すべてのネコ
+            '"DOG"': すべてのイヌ
+            '"DUCK"': すべてのアヒル
+            '"FROG"': すべてのカエル
+            '"MOOSE"': すべてのムース
+            '"PINEAPPLE"': すべてのパイナップル
+            '"ROBOT"': すべてのロボット
+            '"SHARK"': すべてのサメ
+            '"UNICORN"': ユニコーン
+          MOVE1:
+            MOVES.Roll: ボディロール
+            MOVES.ClapHigh: 手を高く上げてたたく
+            MOVES.Dab: ダブ
+            MOVES.DoubleJam: ダブルダウン
+            MOVES.Drop: ドロップ
+            MOVES.Floss: フロス
+            MOVES.Fresh: フレッシュ
+            MOVES.Clown: ガンナム
+            MOVES.Kick: 星
+            MOVES.ThisOrThat: ディス・オア・ザット
+            MOVES.Rest: 設定なし
+          MOVE2:
+            MOVES.Roll: ボディロール
+            MOVES.ClapHigh: 手を高く上げてたたく
+            MOVES.Dab: ダブ
+            MOVES.DoubleJam: ダブルダウン
+            MOVES.Drop: ドロップ
+            MOVES.Floss: フロス
+            MOVES.Fresh: フレッシュ
+            MOVES.Clown: ガンナム
+            MOVES.Kick: 星
+            MOVES.ThisOrThat: ディス・オア・ザット
+            MOVES.Rest: 設定なし
       Dancelab_atTimestamp:
         text: "{TIMESTAMP} {UNIT} 後"
         options:
@@ -549,6 +588,7 @@ ja:
             '"rotation"': 回転
             '"x"': 水平方向の位置
             '"y"': 垂直方向の位置
+            '"tint"': 色合い
       Dancelab_setPropRandom:
         text: ランダムにする {SPRITE} {PROPERTY}
         options:
@@ -728,6 +768,13 @@ ja:
             '"bass"': ベース
             '"mid"': ミドル
             '"treble"': トレブル
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"hearts_colorful"': ハート
+            '"diamond"': ダイヤモンド
+            '"x"': x
+            '"y"': 'y'
       Dancelab_whenKey:
         text: "{KEY} が押されたとき"
         options:
@@ -747,6 +794,8 @@ ja:
             '1': ミドル
             '2': トレブル
       Dancelab_whenSetup:
+        text: セットアップ
+      Dancelab_whenSetup2:
         text: セットアップ
       gamelab_changePropBy:
         text: "{SPRITE} {PROPERTY} を {VAL} 変更"

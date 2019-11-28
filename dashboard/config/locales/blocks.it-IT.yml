@@ -2,6 +2,48 @@
 it:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        text: "{GROUP} alternano ogni {N} battute \ntra {MOVE1} e {MOVE2}"
+        options:
+          GROUP:
+            sprites: tutto
+            '"ALIEN"': tutti gli alieni
+            '"BEAR"': tutti gli orsi
+            '"CAT"': tutti i gatti
+            '"DOG"': tutti i cani
+            '"DUCK"': tutti i paperi
+            '"FROG"': tutti i ranocchi
+            '"MOOSE"': tutte le alci
+            '"PINEAPPLE"': tutti gli ananas
+            '"ROBOT"': tutti i robot
+            '"SHARK"': tutti gli squali
+            '"UNICORN"': Unicorni
+          MOVE1:
+            MOVES.Roll: Piroetta
+            MOVES.ClapHigh: Applauso alto
+            MOVES.Dab: Dab
+            MOVES.DoubleJam: Doppio giù
+            MOVES.Drop: Spaccata
+            MOVES.Floss: Floss
+            MOVES.Fresh: Fresh
+            MOVES.Clown: Gangnam
+            MOVES.Kick: Stella
+            MOVES.ThisOrThat: Questo o quello
+            MOVES.Thriller: Zombie
+            MOVES.Rest: Nessuno
+          MOVE2:
+            MOVES.Roll: Piroetta
+            MOVES.ClapHigh: Applauso alto
+            MOVES.Dab: Dab
+            MOVES.DoubleJam: Doppio giù
+            MOVES.Drop: Spaccata
+            MOVES.Floss: Floss
+            MOVES.Fresh: Fresh
+            MOVES.Clown: Gangnam
+            MOVES.Kick: Stella
+            MOVES.ThisOrThat: Questo o quello
+            MOVES.Thriller: Zombie
+            MOVES.Rest: Nessuno
       Dancelab_atTimestamp:
         text: dopo {TIMESTAMP} {UNIT}
         options:
@@ -35,7 +77,7 @@ it:
             '"next"': "(Successiva)"
             '"prev"': "(Precedente)"
             '"rand"': "(Casuale)"
-            MOVES.Roll: Ruota il corpo
+            MOVES.Roll: Piroetta
             MOVES.ClapHigh: Applauso alto
             MOVES.Dab: Dab
             MOVES.DoubleJam: Doppio giù
@@ -57,7 +99,7 @@ it:
             '"next"': "(Successiva)"
             '"prev"': "(Precedente)"
             '"rand"': "(Casuale)"
-            MOVES.Roll: Ruota il corpo
+            MOVES.Roll: Piroetta
             MOVES.ClapHigh: Applauso alto
             MOVES.Dab: Dab
             MOVES.DoubleJam: Doppio giù
@@ -124,7 +166,7 @@ it:
           MOVE:
             '"rand"': "(Casuale)"
             MOVES.XBend: Butta dietro
-            MOVES.Roll: Ruota il corpo
+            MOVES.Roll: Piroetta
             MOVES.XClapSide: Applauso
             MOVES.ClapHigh: Applauso alto
             MOVES.Dab: Dab
@@ -156,7 +198,7 @@ it:
           MOVE:
             '"rand"': "(Casuale)"
             MOVES.XBend: Butta dietro
-            MOVES.Roll: Ruota il corpo
+            MOVES.Roll: Piroetta
             MOVES.XClapSide: Applauso
             MOVES.ClapHigh: Applauso alto
             MOVES.Dab: Dab
@@ -182,8 +224,10 @@ it:
           DIR:
             '1': "→"
             "-1": "←"
+      Dancelab_everyMeasuresRange:
+        text: 'ripeti ogni {N} battute dopo {START} '
       Dancelab_everySeconds:
-        text: 'ogni {N} {UNIT} '
+        text: 'ripeti ogni {N} {UNIT} '
         options:
           UNIT:
             '"measures"': battute
@@ -237,7 +281,7 @@ it:
             MOVES.Drop: Spaccata
             MOVES.Floss: Floss
             MOVES.Fresh: Fresh
-            MOVES.Roll: Ruota il corpo
+            MOVES.Roll: Piroetta
             MOVES.Kick: Stella
             MOVES.ThisOrThat: Questo o quello
             MOVES.Thriller: Zombie
@@ -409,7 +453,7 @@ it:
             '"DOG"': Cani
             '"DUCK"': Paperi
             '"FROG"': Ranocchi
-            '"MOOSE"': Alci
+            '"MOOSE"': Alce
             '"PINEAPPLE"': Ananas
             '"ROBOT"': Robot
             '"SHARK"': Squali
@@ -604,6 +648,7 @@ it:
             '"rotation"': rotazione
             '"x"': posizione orizzontale
             '"y"': posizione verticale
+            '"tint"': tonalità
       Dancelab_setPropRandom:
         text: modifica a caso la {PROPERTY} di {SPRITE}
         options:
@@ -788,6 +833,29 @@ it:
             '"bass"': toni bassi
             '"mid"': toni medi
             '"treble"': toni acuti
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"hearts_colorful"': Cuori
+            '"diamond"': diamante
+            '"s"': s
+            '"t"': t
+            '"u"': u
+            '"v"': v
+            '"w"': w
+            '"x"': x
+            '"y"': y
+            '"z"': z
+            '"0"': '0'
+            '"1"': '1'
+            '"2"': '2'
+            '"3"': '3'
+            '"4"': '4'
+            '"5"': '5'
+            '"6"': '6'
+            '"7"': '7'
+            '"8"': '8'
+            '"9"': '9'
       Dancelab_whenKey:
         text: quando si preme {KEY}
         options:
@@ -842,6 +910,8 @@ it:
             '1': toni medi
             '2': toni acuti
       Dancelab_whenSetup:
+        text: quando si clicca su "Esegui"
+      Dancelab_whenSetup2:
         text: quando si clicca su "Esegui"
       gamelab_addBehaviorSimple:
         text: il personaggio {SPRITE} inizia {BEHAVIOR}
@@ -1249,7 +1319,7 @@ it:
             MOVES.Drop: Spaccata
             MOVES.Floss: Floss
             MOVES.Fresh: Fresh
-            MOVES.Roll: Ruota il corpo
+            MOVES.Roll: Piroetta
             MOVES.Kick: Stella
             MOVES.ThisOrThat: Questo o quello
             MOVES.Thriller: Zombie

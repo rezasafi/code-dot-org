@@ -149,12 +149,13 @@ Dashboard::Application.routes.draw do
     get '/users/cancel', to: 'registrations#cancel'
     get '/users/clever_takeover', to: 'sessions#clever_takeover'
     get '/users/clever_modal_dismissed', to: 'sessions#clever_modal_dismissed'
-    get '/users/auth/:provider/connect', to: 'authentication_options#connect'
+    get '/users/auth/:provider/connect', to: 'authentication_options#connect', as: :connect_authentication_option
     delete '/users/auth/:id/disconnect', to: 'authentication_options#disconnect'
     get '/users/migrate_to_multi_auth', to: 'registrations#migrate_to_multi_auth'
     get '/users/demigrate_from_multi_auth', to: 'registrations#demigrate_from_multi_auth'
     get '/users/to_destroy', to: 'registrations#users_to_destroy'
     get '/reset_session', to: 'sessions#reset'
+    get '/users/existing_account', to: 'registrations#existing_account'
   end
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',
@@ -326,6 +327,7 @@ Dashboard::Application.routes.draw do
   post '/admin/lookup_section', to: 'admin_search#lookup_section'
   post '/admin/undelete_section', to: 'admin_search#undelete_section', as: 'undelete_section'
   get '/admin/pilots/:pilot_name', to: 'admin_search#show_pilot', as: 'show_pilot'
+  post '/admin/add_to_pilot', to: 'admin_search#add_to_pilot', as: 'add_to_pilot'
 
   # internal engineering dashboards
   get '/admin/dynamic_config', to: 'dynamic_config#show', as: 'dynamic_config_state'

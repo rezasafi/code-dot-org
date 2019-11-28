@@ -2,6 +2,45 @@
 es:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: todo
+            '"ALIEN"': todos los extraterrestres
+            '"BEAR"': todos los osos
+            '"CAT"': todos los gatos
+            '"DOG"': todos los perros
+            '"DUCK"': todos los patos
+            '"FROG"': todas las ranas
+            '"MOOSE"': todos los alces
+            '"PINEAPPLE"': todas las piñas
+            '"ROBOT"': todos los robots
+            '"SHARK"': todos los tiburones
+            '"UNICORN"': Unicornios
+          MOVE1:
+            MOVES.Roll: Bamboleo
+            MOVES.ClapHigh: Palmas hacia arriba
+            MOVES.Dab: Limpia
+            MOVES.DoubleJam: Doble abajo
+            MOVES.Drop: Soltar
+            MOVES.Floss: Desalojar
+            MOVES.Fresh: Fresco
+            MOVES.Clown: Clown
+            MOVES.Kick: Estrella
+            MOVES.ThisOrThat: Este o aquel
+            MOVES.Rest: Ninguno
+          MOVE2:
+            MOVES.Roll: Bamboleo
+            MOVES.ClapHigh: Palmas hacia arriba
+            MOVES.Dab: Limpia
+            MOVES.DoubleJam: Doble abajo
+            MOVES.Drop: Soltar
+            MOVES.Floss: Desalojar
+            MOVES.Fresh: Fresco
+            MOVES.Clown: Clown
+            MOVES.Kick: Estrella
+            MOVES.ThisOrThat: Este o aquel
+            MOVES.Rest: Ninguno
       Dancelab_atTimestamp:
         text: después de {TIMESTAMP} {UNIT}
         options:
@@ -595,6 +634,7 @@ es:
             '"rotation"': rotación
             '"x"': posición horizontal
             '"y"': posición vertical
+            '"tint"': tonalidad
       Dancelab_setPropRandom:
         text: aleatorizar {SPRITE} {PROPERTY}
         options:
@@ -776,6 +816,20 @@ es:
             '"bass"': bajo
             '"mid"': medio
             '"treble"': tiple
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"hearts_colorful"': Corazones
+            '"diamond"': diamante
+            '"s"': s
+            '"t"': t
+            '"u"': u
+            '"v"': v
+            '"w"': w
+            '"x"': x
+            '"y"': 'y'
+            '"z"': z
+            '"6"': '6'
       Dancelab_whenKey:
         text: al pulsar {KEY}
         options:
@@ -788,6 +842,7 @@ es:
             '"enter"': intro
             '"a"': a
             '"d"': d
+            '"g"': g
             '"h"': h
             '"i"': i
             '"j"': j
@@ -806,6 +861,7 @@ es:
             '"x"': x
             '"y"': 'y'
             '"z"': z
+            '"6"': '6'
       Dancelab_whenPeak:
         text: cuando {RANGE} llega al punto máximo
         options:
@@ -814,6 +870,8 @@ es:
             '1': medio
             '2': tiple
       Dancelab_whenSetup:
+        text: establecer
+      Dancelab_whenSetup2:
         text: establecer
       gamelab_addBehaviorSimple:
         text: gráfico {SPRITE} inicia {BEHAVIOR}
@@ -883,6 +941,7 @@ es:
             '"space"': espacio
             '"a"': a
             '"d"': d
+            '"g"': g
             '"h"': h
             '"i"': i
             '"j"': j

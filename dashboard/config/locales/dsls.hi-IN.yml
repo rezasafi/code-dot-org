@@ -955,7 +955,7 @@ hi-IN:
         questions:
         - {}
         answers:
-        - {}
+        - text: सेट करें
         - correct: true
         - {}
       Multi-Screen Apps:

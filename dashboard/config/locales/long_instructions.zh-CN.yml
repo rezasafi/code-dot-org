@@ -6215,17 +6215,6 @@ zh-CN:
         看看循环里用来检查是否空格键被按下的`如果`语句。 ( [显示在哪里](#triggercallout=code_triggered1) )
         \*
         使用`rotationSpeed`模块来让彩色轮子在按下空格键时旋转。
-      CSD U3 abstraction rotation control_2019: |-
-        # 控制速度
-
-        你在循环外面用过了`rotatationSpeed`来让精灵能在游戏开始时旋转。你还能在循环**里面**用`rotationSpeed`来改变精灵的速度。例如，当用户按下空格键时，精灵会开始旋转，直到最后停止。
-
-        # 这样做
-
-        \*
-        看看循环里用来检查是否空格键被按下的`如果`语句。 ( [显示在哪里](#triggercallout=code_triggered1) )
-        \*
-        使用`rotationSpeed`模块来让彩色轮子在按下空格键时旋转。
       CSD U3 abstraction velocityX control: |-
         # 多个控制
 
@@ -10805,6 +10794,45 @@ zh-CN:
 
         -   创建两个时钟，让外星人在不同时钟的控制下完成不同的舞步
         -   当外星人相互接触时，让他们开始不同的舞蹈
+      Dance_2019_01: |-
+        _让我们跳舞吧！_
+
+        将<xml><block type="Dancelab_makeAnonymousDanceSprite" block-text="make a new dancer"><title name="COSTUME" config="&quot;CAT&quot;, &quot;PINEAPPLE&quot;">"CAT"</title><title name="LOCATION">{x: 200, y: 200}</title></block></xml>模块拖到工作区中，然后将其连接到<xml><block type="Dancelab_whenSetup2" next_connection_disabled="true" block-text="setup"></block></xml>模块中以创建您的第一个舞者。
+
+        -   _如果您需要更多信息或其他挑战，也可以单击左侧的灯泡。_
+      Dance_2019_02: |-
+        <xml><block type="Dancelab_whenKey" block-text="when up pressed"></block></xml>模块用来在按下向上箭头时运行代码。使用<xml><block type="Dancelab_doMoveEachLR" block-text="do once"><title name="GROUP">"CAT"</title><title name="MOVE">MOVES.XClapSide</title><title name="DIR">-1</title></block></xml>模块后，按下向上箭头即可令舞者鼓掌，或尝试其他动作！
+
+        _确保在单击“运行”按钮后按向上箭头或![](<https://images.code.org/419e704e6841c0b696016bf5029b8cb9-image-1571864825506.06.45 PM.png>)！_
+      Dance_2019_03: 开始跳舞吧！对每个舞者进行编程，让他们在您按下不同按键做出相应动作。为每个舞者选择您喜欢的动作，或者将其设置为`（随机）`来做出完全出乎您预料的动作！
+      Dance_2019_04: |-
+        让舞者随着音乐的节拍做出动作！
+
+        将<xml><block type="Dancelab_atTimestamp"><title name="TIMESTAMP">4</title><title name="UNIT">"measures"</title></block></xml>模块拖出来放到工作区中。将它连接在<xml><block type="Dancelab_changeMoveEachLR"><title name="GROUP">"SHARK"</title><title name="MOVE">MOVES.ThisOrThat</title><title name="DIR">-1</title></block></xml>模块下面。第四小节之后，舞者应该开始新的动作。
+
+        **小节**是个单位，用来计算音乐中的时间。在本教程中，一个小节长度为四拍。
+      Dance_2019_05: |-
+        _现在跟着节奏动起来！_
+
+        在工作区域添加一个 <xml><block type="Dancelab_atTimestamp"><title name="TIMESTAMP">6</title><title name="UNIT">"小节"</title></block></xml>模块。让舞者在 6 个小节后开始新的动作！
+      Dance_2019_06: |-
+        使用这个新模块来创建一组比较小的伴舞演员，将领舞者围绕在中间。
+          <xml><block type="Dancelab_makeNewDanceSpriteGroup">
+            <title name="N">???</title>
+            <title name="COSTUME" config="&quot;BEAR&quot;, &quot;CAT&quot;, &quot;FROG&quot;, &quot;PINEAPPLE&quot;, &quot;SHARK&quot;, &quot;UNICORN&quot;, &quot;SLOTH&quot;">???</title>
+            <title name="LAYOUT">"circle"</title>
+          </block></xml>
+        现在，您可以一次创建一批舞者！
+      Dance_2019_08: 舞者具有“色彩”属性，可以用来添加一层颜色。尝试更改其中一位舞者（或整个舞者）的色彩！
+      Dance_2019_09: |-
+        这是一种反复触发的特殊事件。
+
+        <xml><block type="Dancelab_everySeconds"><title name="N">2</title><title name="UNIT">"measures"</title></block></xml>
+
+        工具箱中的其他新模块可以用来随时间逐渐（或者随机！）改变舞者的属性。
+
+        _要有创造力，玩得开心！_
+      Dance_2019_10: 随着节奏律动吧！创建自己的舞蹈，并与朋友分享。
       Dance_Party_01: |-
         _让我们开个舞会吧！_
 
@@ -10874,7 +10902,23 @@ zh-CN:
 
         \*\* 使用这些键来做出 蹲下-拍手-蹲下-拍手 的动作，看你能做多快！ \*\*
       Dance_Party_12: 随着节奏律动吧！创建自己的舞蹈，并与朋友分享。
+      Dance_Party_extras_alternate_2019: |-
+        # 进入阵型！
+
+        使用[blockly block][0]模块来改变伴舞演员在整个舞蹈中的阵型。尝试以下任意创意来扩展：
+
+        -   创建采用不同布局的另一组舞者
+        -   按下按键时更改布局
+        -   舞者改变阵型时更改属性
       Dance_Party_extras_battle: |-
+        # 舞蹈团队
+
+        下面是两个团队之间的舞蹈。箭头键控制其中一个舞者， “w, a, s, d” 键控制另一个舞者。和朋友跳支舞，然后试着改进这支舞。
+
+        -   添加更多的键来控制舞蹈
+        -   按下键时，可以让备选舞者也跟着响应
+        -   通过设置舞者的可见性，可以每4个小节替换舞者
+      Dance_Party_extras_battle_2019: |-
         # 舞蹈团队
 
         下面是两个团队之间的舞蹈。箭头键控制其中一个舞者， “w, a, s, d” 键控制另一个舞者。和朋友跳支舞，然后试着改进这支舞。
@@ -10892,6 +10936,10 @@ zh-CN:
         -   试着使用其他持续时间（如0.5为半个小节，或0.125为1/8小节)。
         -   添加一些`小节后`的事件。
         -   将"小节"切换为"秒"，并试着以这种方式给舞蹈安排节奏。
+      Dance_Party_extras_every_beat_2019: |-
+        # 加速、减速
+
+        最后这段舞蹈采用[blockly block][0]模块来控制每个舞者的动作速度。尝试在曲子的不同位置采用不同的速度看看。您可以在这段舞蹈里面随意调节，或者返回之前任意舞蹈，来让效果变得更精彩一些。
       Dance_Party_extras_layout: |-
         # 开始编队！
 
@@ -10904,11 +10952,27 @@ zh-CN:
         # 低音、中音和高音
 
         舞蹈会在音乐的不同部分变得响亮时使用“高峰”事件来触发代码。试着选择不同的歌曲，看看他们是如何改变舞蹈的。
+      Dance_Party_extras_on_beat_2019: |-
+        # 低音、中音和高音
+
+        舞蹈会在音乐的不同部分变得响亮时使用“高峰”事件来触发代码。试着选择不同的歌曲，看看他们是如何改变舞蹈的。
       Dance_Party_extras_speed: |-
         # 让它加速、减速
 
         这个最后的舞蹈使用“设定速度”模块来控制每个舞者的动作速度。在歌曲的不同点尝试不同的速度。随意地在这个舞蹈上做修改，或者回到之前的舞蹈中，让它们变得更酷。
+      Dance_Party_extras_speed_2019: |-
+        # 加速、减速
+
+        最后这段舞蹈采用[blockly block][0]模块来控制每个舞者的动作速度。尝试在曲子的不同位置采用不同的速度看看。您可以在这段舞蹈里面随意调节，或者返回之前任意舞蹈，来让效果变得更精彩一些。
       Dance_Party_extras_visible: |-
+        # 让他们去哪儿？
+
+        这个舞蹈显示和隐藏了两组舞者。看看如何加入自己的天赋。
+
+        -   添加另一组舞者
+        -   使用箭头键显示和隐藏舞者
+        -   隐藏所有的舞者，并切换到一个令人兴奋的背景效果
+      Dance_Party_extras_visible_2019: |-
         # 让他们去哪儿？
 
         这个舞蹈显示和隐藏了两组舞者。看看如何加入自己的天赋。

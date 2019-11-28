@@ -2,6 +2,45 @@
 he:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: כולם
+            '"ALIEN"': כל החייזרים
+            '"BEAR"': כל הדובים
+            '"CAT"': כל החתולים
+            '"DOG"': כל הכלבים
+            '"DUCK"': כל הברווזים
+            '"FROG"': כל הצפרדעים
+            '"MOOSE"': כל המוּסים
+            '"PINEAPPLE"': כל האננסים
+            '"ROBOT"': כל הרובוטים
+            '"SHARK"': כל הכרישים
+            '"UNICORN"': חדי-קרן
+          MOVE1:
+            MOVES.Roll: בָּאדִי רוֹל / גלגול גוף
+            MOVES.ClapHigh: קלאפ היי
+            MOVES.Dab: דֶאבּ
+            MOVES.DoubleJam: דָאבֵּל דָאוּן
+            MOVES.Drop: דְרוֹפּ
+            MOVES.Floss: פְלוֹס
+            MOVES.Fresh: פְרֶשׁ
+            MOVES.Clown: גאנגם
+            MOVES.Kick: כוכב
+            MOVES.ThisOrThat: זה או ההוא
+            MOVES.Rest: כלום
+          MOVE2:
+            MOVES.Roll: בָּאדִי רוֹל / גלגול גוף
+            MOVES.ClapHigh: קלאפ היי
+            MOVES.Dab: דֶאבּ
+            MOVES.DoubleJam: דָאבֵּל דָאוּן
+            MOVES.Drop: דְרוֹפּ
+            MOVES.Floss: פְלוֹס
+            MOVES.Fresh: פְרֶשׁ
+            MOVES.Clown: גאנגם
+            MOVES.Kick: כוכב
+            MOVES.ThisOrThat: זה או ההוא
+            MOVES.Rest: כלום
       Dancelab_atTimestamp:
         text: אחרי {TIMESTAMP} {UNIT}
         options:
@@ -594,6 +633,7 @@ he:
             '"rotation"': סיבוב
             '"x"': מיקום אופקי
             '"y"': מיקום אנכי
+            '"tint"': גוון
       Dancelab_setPropRandom:
         text: קבע באקראי את {PROPERTY} של {SPRITE}
         options:
@@ -775,6 +815,29 @@ he:
             '"bass"': באס
             '"mid"': אמצע
             '"treble"': טְרֶבֶּל
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"hearts_colorful"': לבבות
+            '"diamond"': יהלום
+            '"s"': s
+            '"t"': t
+            '"u"': u
+            '"v"': v
+            '"w"': w
+            '"x"': x
+            '"y"': 'y'
+            '"z"': z
+            '"0"': '0'
+            '"1"': '1'
+            '"2"': '2'
+            '"3"': '3'
+            '"4"': '4'
+            '"5"': '5'
+            '"6"': '6'
+            '"7"': '7'
+            '"8"': '8'
+            '"9"': '9'
       Dancelab_whenKey:
         text: כשמקש {KEY} לחוץ
         options:
@@ -829,6 +892,8 @@ he:
             '1': אמצע
             '2': טְרֶבֶּל
       Dancelab_whenSetup:
+        text: הגדרה
+      Dancelab_whenSetup2:
         text: הגדרה
       gamelab_addBehaviorSimple:
         text: דמות {SPRITE} מתחילה {BEHAVIOR}

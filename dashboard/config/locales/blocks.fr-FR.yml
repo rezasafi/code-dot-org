@@ -2,6 +2,45 @@
 fr:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: tout
+            '"ALIEN"': tous les extraterrestres
+            '"BEAR"': tous les ours
+            '"CAT"': tous les chats
+            '"DOG"': tous les chiens
+            '"DUCK"': tous les canards
+            '"FROG"': toutes les grenouilles
+            '"MOOSE"': tous les orignaux
+            '"PINEAPPLE"': tous les ananas
+            '"ROBOT"': tous les robots
+            '"SHARK"': tous les requins
+            '"UNICORN"': Licornes
+          MOVE1:
+            MOVES.Roll: Roulis de caisse
+            MOVES.ClapHigh: Tapez des mains en haut
+            MOVES.Dab: Dab
+            MOVES.DoubleJam: Doubler la mise
+            MOVES.Drop: Drop
+            MOVES.Floss: Floss dance
+            MOVES.Fresh: Fresh dance
+            MOVES.Clown: Gangnam
+            MOVES.Kick: Étoile
+            MOVES.ThisOrThat: Ceci ou cela
+            MOVES.Rest: Aucun
+          MOVE2:
+            MOVES.Roll: Roulis de caisse
+            MOVES.ClapHigh: Tapez des mains en haut
+            MOVES.Dab: Dab
+            MOVES.DoubleJam: Doubler la mise
+            MOVES.Drop: Drop
+            MOVES.Floss: Floss dance
+            MOVES.Fresh: Fresh dance
+            MOVES.Clown: Gangnam
+            MOVES.Kick: Étoile
+            MOVES.ThisOrThat: Ceci ou cela
+            MOVES.Rest: Aucun
       Dancelab_atTimestamp:
         text: après {TIMESTAMP} {UNIT}
         options:
@@ -595,6 +634,7 @@ fr:
             '"rotation"': orientation
             '"x"': position horizontale
             '"y"': position verticale
+            '"tint"': nuance
       Dancelab_setPropRandom:
         text: randomiser {SPRITE} {PROPERTY}
         options:
@@ -776,6 +816,29 @@ fr:
             '"bass"': grave
             '"mid"': médium
             '"treble"': aigu
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"hearts_colorful"': Cœurs
+            '"diamond"': diamant
+            '"s"': s
+            '"t"': t
+            '"u"': u
+            '"v"': v
+            '"w"': w
+            '"x"': x
+            '"y"': y
+            '"z"': z
+            '"0"': '1'
+            '"1"': '1'
+            '"2"': '2'
+            '"3"': '3'
+            '"4"': '4'
+            '"5"': '5'
+            '"6"': '6'
+            '"7"': '7'
+            '"8"': '8'
+            '"9"': '9'
       Dancelab_whenKey:
         text: En appuyant sur {KEY}
         options:
@@ -829,6 +892,8 @@ fr:
             '1': médium
             '2': aigu
       Dancelab_whenSetup:
+        text: configuration
+      Dancelab_whenSetup2:
         text: configuration
       gamelab_addBehaviorSimple:
         text: le sprite {SPRITE} commence {BEHAVIOR}
@@ -1298,6 +1363,10 @@ fr:
         text: lieu aléatoire
       Vector_vectorNorth:
         text: nord
+      Vector_where:
+        options:
+          PROPERTY:
+            "'shapeColor'": couleur
       aalab_goToScene:
         options:
           SCENE:

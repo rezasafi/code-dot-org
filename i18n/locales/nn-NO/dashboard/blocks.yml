@@ -2,6 +2,45 @@
 nn:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: alle
+            '"ALIEN"': alle romvesener
+            '"BEAR"': aller bjørner
+            '"CAT"': alle katter
+            '"DOG"': aller hunder
+            '"DUCK"': alle ender
+            '"FROG"': alle frosker
+            '"MOOSE"': alle elger
+            '"PINEAPPLE"': alle ananaser
+            '"ROBOT"': alle roboter
+            '"SHARK"': alle haier
+            '"UNICORN"': Einhjørningar
+          MOVE1:
+            MOVES.Roll: Rull
+            MOVES.ClapHigh: Klapp høyt
+            MOVES.Dab: Dab
+            MOVES.DoubleJam: Dobbeljam
+            MOVES.Drop: Dropp
+            MOVES.Floss: Floss
+            MOVES.Fresh: Frisk
+            MOVES.Clown: Klovn
+            MOVES.Kick: Stjerne
+            MOVES.ThisOrThat: Dette eller dette
+            MOVES.Rest: Ingen
+          MOVE2:
+            MOVES.Roll: Rull
+            MOVES.ClapHigh: Klapp høyt
+            MOVES.Dab: Dab
+            MOVES.DoubleJam: Dobbeljam
+            MOVES.Drop: Dropp
+            MOVES.Floss: Floss
+            MOVES.Fresh: Frisk
+            MOVES.Clown: Klovn
+            MOVES.Kick: Stjerne
+            MOVES.ThisOrThat: Dette eller dette
+            MOVES.Rest: Ingen
       Dancelab_atTimestamp:
         text: etter {TIMESTAMP} {UNIT}
         options:
@@ -588,6 +627,7 @@ nn:
             '"rotation"': rotasjon
             '"x"': horisontal posisjon
             '"y"': vertikal posisjon
+            '"tint"': farge
       Dancelab_setPropRandom:
         text: gjer {SPRITE} {PROPERTY} tilfeldig
         options:
@@ -769,6 +809,19 @@ nn:
             '"bass"': bass
             '"mid"': mellomtone
             '"treble"': diskant
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"hearts_colorful"': Hjerter
+            '"diamond"': diamant
+            '"s"': s
+            '"t"': t
+            '"u"': u
+            '"v"': v
+            '"w"': w
+            '"x"': x
+            '"y"': 'y'
+            '"z"': z
       Dancelab_whenKey:
         text: når {KEY} blir trykka ned
         options:
@@ -807,6 +860,8 @@ nn:
             '1': mellomtone
             '2': diskant
       Dancelab_whenSetup:
+        text: oppsett
+      Dancelab_whenSetup2:
         text: oppsett
       gamelab_changePropBy:
         text: endre {SPRITE} {PROPERTY} med {VAL}

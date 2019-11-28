@@ -2,6 +2,14 @@
 ga:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: uile
+          MOVE1:
+            MOVES.Rest: Dada
+          MOVE2:
+            MOVES.Rest: Dada
       Dancelab_atTimestamp:
         options:
           UNIT:
@@ -237,6 +245,12 @@ ga:
           PROPERTY:
             '"scale"': méid
             '"height"': airde
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"diamond"': diamant
+            '"x"': x
+            '"y"': 'y'
       Dancelab_whenKey:
         options:
           KEY:

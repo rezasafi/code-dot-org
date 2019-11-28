@@ -2,6 +2,14 @@
 km:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: ទាំងអស់
+          MOVE1:
+            MOVES.Rest: គ្មាន
+          MOVE2:
+            MOVES.Rest: គ្មាន
       Dancelab_atTimestamp:
         options:
           UNIT:
@@ -237,6 +245,12 @@ km:
           PROPERTY:
             '"scale"': ទំហំ
             '"height"': កម្ពស់
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"diamond"': គ្រាប់ពេជ្រ
+            '"x"': x
+            '"y"': y
       Dancelab_whenKey:
         options:
           KEY:

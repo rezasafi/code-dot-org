@@ -1857,6 +1857,110 @@ zh-CN:
         aquatic7: 你可以用“如果路径”模块来帮助你做正确的转弯。
       CourseE_HOC 2018 Level_9b:
         voyage_aquatic_9a: 看见红色和蓝色的珊瑚块了吗？将它们用作向右向左转的路标来通过礁石。
+      Dance_2019_01:
+        validation: |-
+          **我如何通过此关？**
+          \*确保屏幕上出现一个舞者。
+
+          _此关在 4 个小节后结束。_
+        challenges: |-
+          **可选挑战**
+
+          -   选择另一首歌曲播放。
+          -   将舞者移到新位置。
+          -   创建多个舞者。
+      Dance_2019_02:
+        validation: |-
+          **我如何通过这一关？**
+
+          -   舞者必须做出一个动作。
+          -   您必须按一个箭头键。
+
+          _此关在4个小节后结束。_
+        challenges: |-
+          **可选挑战**
+
+          -   使用多个<xml><block type="Dancelab_whenKey"><title name="KEY"></title></block></xml>模块。
+      Dance_2019_03:
+        validation: |-
+          **我如何通过这一关？**
+
+          -   两个舞者都必须做出动作。
+          -   您必须按箭头键。
+
+          _此关在4个小节后结束。_
+        challenges: |-
+          **可选挑战**
+
+          -   让舞者对左右箭头键做出回应。
+      Dance_2019_04:
+        validation: |-
+          **我如何通过此关？**
+          \*舞者需要在 4 个小节后变换到新动作。
+
+          _此关在 8 个小节后结束。_
+      Dance_2019_05:
+        validation: |-
+          **如何通过此关？**
+
+          \*6 个小节后，舞者需要跳与 4 个小节后不同的舞蹈。
+
+          _此关在 12 个小节后结束。_
+        challenges: |-
+          **可选挑战**
+
+          -   每当舞者切换动作时，更换背景。
+      Dance_2019_06:
+        validation: |-
+          **如何通过这一关？**
+
+          -   创建一个领舞者和一组伴舞演员。
+
+          _此关在7个小节后结束。_
+        challenges: |-
+          **可选挑战**
+
+          -   创建多组伴舞演员。
+      Dance_2019_07:
+        validation: |-
+          **我如何通过这一关？**
+
+          -   音乐开始后，更改至少一个舞者的大小。
+
+          _此关在6个小节后结束。_
+        challenges: |-
+          **可选挑战**
+
+          \*通过更改其他属性（宽度、高度、旋转等）来尝试
+      Dance_2019_08:
+        validation: |-
+          **我如何通过这一关？**
+
+          -   更改至少一个舞者的色彩。
+
+          _此关在6个小节后结束。_
+        tint_hint: 您是否注意到舞者没有完全变为您选择的那种颜色？这是因为**色彩**会将您选择的颜色与舞者本身的颜色混合在一起。
+      Dance_2019_09:
+        validation: |-
+          **我如何通过这一关？**
+
+          -   只需按“完成”按钮即可！
+        repeat_every_ideas: |-
+          **需要新点子吗？**
+
+          -   反复更改舞者的大小可以使其成长。
+          -   反复更改舞者的旋转角度可以使其旋转。
+          -   反复更改舞者的水平或垂直位置，可以使其在屏幕上移动。
+
+          _您还可以使用负数来产生相反的效果！_
+        next_previous: |-
+          \*可选挑战\*\*
+
+          -   您还可以使用此新事件模块，将动作设置为`（随机）`、`（下一个）或`（上一个）\`，这样就可以循环整个舞蹈动作列表。    <xml><block type="Dancelab_changeMoveEachLR">
+              <title name="GROUP" config="sprites, &quot;BEAR&quot;, &quot;CAT&quot;, &quot;DOG&quot;, &quot;DUCK&quot;, &quot;FROG&quot;, &quot;PINEAPPLE&quot;, &quot;ROBOT&quot;, &quot;SHARK&quot;, &quot;UNICORN&quot;">???</title>
+              <title name="MOVE">"rand"</title>
+              <title name="DIR">-1</title>
+              </block></xml>
       Dance_Party_01:
         validation: |-
           **我如何通过此关？**

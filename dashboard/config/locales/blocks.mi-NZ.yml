@@ -2,6 +2,10 @@
 mi:
   data:
     blocks:
+      Dancelab_alternateMoves:
+        options:
+          GROUP:
+            sprites: katoa
       Dancelab_atTimestamp:
         options:
           UNIT:
@@ -201,6 +205,11 @@ mi:
           PROPERTY:
             '"scale"': rahinga
             '"height"': teitei
+      Dancelab_translateStrings:
+        options:
+          STRING:
+            '"diamond"': taimana
+            '"x"': x
       Dancelab_whenKey:
         options:
           KEY:
