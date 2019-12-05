@@ -190,7 +190,11 @@ def distribute_course_content(locale)
     type_data[locale] = Hash.new
     type_data[locale]["data"] = Hash.new
     type_data[locale]["data"][type] = translations.sort.to_h
-    sanitize_data_and_write(type_data, "dashboard/config/locales/#{type}.#{locale}.yml")
+
+    dest_file = "dashboard/config/locales/#{type}.#{locale}.yml"
+    existing_data = YAML.load_file(dest_file)
+    resulting_data = existing_data.deep_merge(type_data)
+    sanitize_data_and_write(resulting_data, dest_file)
   end
 end
 
