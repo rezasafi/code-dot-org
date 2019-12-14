@@ -152,6 +152,8 @@ export function setupApp(appOptions) {
       // Our report will already have the correct callback and program
       // in the contained level case, unless we're editing blocks.
       if (appOptions.level.edit_blocks || !appOptions.hasContainedLevels) {
+        debugger;
+        // doesn't seem significant, but worth a quick look
         if (appOptions.hasContainedLevels) {
           var xml = Blockly.Xml.blockSpaceToDom(Blockly.mainBlockSpace);
           report.program = Blockly.Xml.domToText(xml);

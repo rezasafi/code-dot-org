@@ -2584,7 +2584,12 @@ StudioApp.prototype.setStartBlocks_ = function(config, loadLastAttempt) {
       config.forceInsertTopBlock
     );
   }
+
   if (config.level.sharedFunctions) {
+    // The plan: First, try adding just the function header <- nevermind... that won't work...
+    // If that doesn't work, try adding removing the blocks from startBlocks before saving... ugh
+    console.log("setStartBlocks_ checking if there are sharedFunctions.")
+      // debugger; // the section I originally commented
     startBlocks = blockUtils.appendNewFunctions(
       startBlocks,
       config.level.sharedFunctions
@@ -2592,7 +2597,11 @@ StudioApp.prototype.setStartBlocks_ = function(config, loadLastAttempt) {
   }
   startBlocks = this.arrangeBlockPosition(startBlocks, config.blockArrangement);
   try {
+    // debugger;
+    // Behaviors get added to the toolbox here.
+  // throw "Stop the code here"
     this.loadBlocks(startBlocks);
+    debugger;
   } catch (e) {
     if (loadLastAttempt) {
       try {
@@ -2662,6 +2671,8 @@ StudioApp.prototype.handleUsingBlockly_ = function(config) {
   }
 
   var div = document.getElementById('codeWorkspace');
+  // debugger;
+  // check config.level.toolbox
   var options = {
     toolbox: config.level.toolbox,
     disableIfElseEditing: utils.valueOr(

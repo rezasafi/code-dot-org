@@ -437,6 +437,7 @@ exports.cleanBlocks = function(blocksDom) {
  */
 exports.appendNewFunctions = function(blocksXml, functionsXml) {
   const startBlocksDom = xml.parseElement(blocksXml);
+  debugger;
   const sharedFunctionsDom = xml.parseElement(functionsXml);
   const functions = [...sharedFunctionsDom.ownerDocument.firstChild.childNodes];
   for (let func of functions) {

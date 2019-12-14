@@ -109,6 +109,8 @@ export default function(app, levels, options) {
           !valueOr(level.hideCustomBlocks, true) ||
           options.level.edit_blocks
         ) {
+          // debugger;
+          // This seems significant. Possibly blocksByCategory?
           level.toolbox = appendBlocksByCategory(
             level.toolbox,
             blocksByCategory

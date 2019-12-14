@@ -2952,6 +2952,8 @@ Studio.getStudioExampleFailure = function(exampleBlock) {
 // XXX This is the only method used by the templates!
 Studio.runButtonClick = function() {
   if (level.edit_blocks) {
+    debugger;
+    // This seems super significant.
     Studio.onPuzzleComplete();
   }
   var runButton = document.getElementById('runButton');

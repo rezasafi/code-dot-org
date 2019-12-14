@@ -816,6 +816,7 @@ P5Lab.prototype.onPuzzleComplete = function(submit, testResult, message) {
     this.testResults = TestResults.ALL_PASS;
     this.message = containedLevelResultsInfo.feedback;
   } else if (this.level.editCode) {
+    debugger; // possibly significant?
     // If we want to "normalize" the JavaScript to avoid proliferation of nearly
     // identical versions of the code on the service, we could do either of these:
 
@@ -825,8 +826,27 @@ P5Lab.prototype.onPuzzleComplete = function(submit, testResult, message) {
     program = encodeURIComponent(this.studioApp_.getCode());
     this.message = null;
   } else {
+    debugger; // possibly significant?
     // We're using blockly, report the program as xml
     var xml = Blockly.Xml.blockSpaceToDom(Blockly.mainBlockSpace);
+
+    // THE PLAN!!!
+    // Here, check if you're in toolbox edit mode
+    // Then if you are, put the behavior AND function definitions into the start blocks
+    //
+    // start blocks makes sense because that's where they currently live.
+    // I think blockly has some sort of workaround so it doesn't show the function/behavior definitions
+    // in the workspace. That same workaround isn't applied to the toolbox. The definitions _need_ to be
+    // in start blocks anyway as startBlocks get added to the workspace and the workspace
+    // that is where blockly looks for the definitions when the code is running
+    //
+    // Oh, also get rid of all that function/behavior definition nonsense you added in the LB edit script
+    xml.querySelectorAll('xml > block')
+    var toRemove = Array.prototype.slice.call(xml.querySelectorAll('xml > block'), 0).filter(function(element) {return element.getAttribute('type') === 'behavior_definition' && element.getAttribute('usercreated') !== 'true'})
+    toRemove.forEach(element => {
+      xml.removeChild(element);
+    })
+    // xml.removeChild(toRemove[0])
     program = encodeURIComponent(Blockly.Xml.domToText(xml));
   }
 
@@ -848,6 +868,7 @@ P5Lab.prototype.onPuzzleComplete = function(submit, testResult, message) {
       // finished, then call onCompelte
       runAfterPostContainedLevel(onComplete);
     } else {
+      debugger; // curious what happens here
       this.studioApp_.report({
         app: 'gamelab',
         level: this.level.id,

@@ -37,6 +37,7 @@ class Blockly < Level
     required_blocks
     recommended_blocks
     solution_blocks
+    behavior_blocks
     ani_gif_url
     is_k1
     skip_instructions_popup
@@ -89,7 +90,7 @@ class Blockly < Level
 
   # These serialized fields will be serialized/deserialized as straight XML
   def xml_blocks
-    %w(initialization_blocks start_blocks toolbox_blocks required_blocks recommended_blocks solution_blocks)
+    %w(initialization_blocks start_blocks toolbox_blocks required_blocks recommended_blocks solution_blocks behavior_blocks)
   end
 
   def to_xml(options={})
@@ -305,6 +306,7 @@ class Blockly < Level
             levelBuilderRequiredBlocks
             levelBuilderRecommendedBlocks
             solutionBlocks
+            behaviorBlocks
           ).each do |xml_block_prop|
             next unless level_options.key? xml_block_prop
             set_unless_nil(level_options, xml_block_prop, localized_function_blocks(level_options[xml_block_prop]))
@@ -330,6 +332,7 @@ class Blockly < Level
         required_blocks: 'levelBuilderRequiredBlocks',
         recommended_blocks: 'levelBuilderRecommendedBlocks',
         toolbox_blocks: 'toolbox',
+        behavior_blocks: 'behaviorBlocks',
         x: 'initialX',
         y: 'initialY',
         maze: 'map',
@@ -353,6 +356,7 @@ class Blockly < Level
           try(:project_template_level).try(:toolbox_blocks) ||
           toolbox_blocks ||
           default_toolbox_blocks
+        level_prop['behaviorBlocks'] = behavior_blocks
         level_prop['codeFunctions'] = try(:project_template_level).try(:code_functions) || code_functions
         level_prop['sharedBlocks'] = shared_blocks
         level_prop['sharedFunctions'] = shared_functions if JSONValue.value(include_shared_functions)

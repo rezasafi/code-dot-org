@@ -36,3 +36,7 @@
     .field
       = link_to 'Edit Solution Blocks', edit_blocks_level_path(@level, :solution_blocks) unless @level.new_record?
       = render partial: 'levels/editors/fields/collapsible_block_editor', locals: {f: f, xml_id: 'solution'}
+
+  .field
+    = 'Edit Custom Function/Behavior Definition Blocks'
+    = render partial: 'levels/editors/fields/collapsible_block_editor', locals: {f: f, xml_id: 'behavior'}
