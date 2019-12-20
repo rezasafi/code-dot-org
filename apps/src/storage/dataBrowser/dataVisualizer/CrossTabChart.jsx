@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {sortAlphabeticallyOrNumerically} from '../dataUtils';
 
 const styles = {
   headerCell: {
@@ -44,14 +45,7 @@ class CrossTabChart extends React.Component {
     });
 
     // Sort columns
-    let columns;
-    if (this.props.numericColumns.includes(columnName)) {
-      columns = [...pivotedColumns].sort(function(a, b) {
-        return a - b;
-      });
-    } else {
-      columns = [...pivotedColumns].sort();
-    }
+    let columns = sortAlphabeticallyOrNumerically([...pivotedColumns]);
     columns.unshift(rowName);
 
     // Sort rows
