@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow, mount} from 'enzyme';
 import sinon from 'sinon';
 import {expect} from '../../../../util/reconfiguredChai';
+import {ChartType} from '@cdo/apps/storage/dataBrowser/dataUtils';
 import GoogleChart from '@cdo/apps/applab/GoogleChart';
 import BaseDialog from '@cdo/apps/templates/BaseDialog';
 import {UnconnectedVisualizerModal as VisualizerModal} from '@cdo/apps/storage/dataBrowser/dataVisualizer/VisualizerModal';
@@ -25,6 +26,36 @@ describe('VisualizerModal', () => {
 
     wrapper.instance().handleOpen();
     expect(wrapper.find(BaseDialog).prop('isOpen')).to.be.true;
+  });
+
+  describe('state management', () => {
+    it('clears selected columns when chart type changes', () => {
+      let wrapper = shallow(<VisualizerModal {...DEFAULT_PROPS} />);
+      wrapper.instance().setState({
+        chartType: ChartType.SCATTER_PLOT,
+        selectedColumn1: 'column1',
+        selectedColumn2: 'column2'
+      });
+      expect(wrapper.instance().state.selectedColumn1).to.equal('column1');
+      wrapper
+        .find({displayName: 'Chart Type'})
+        .simulate('change', {target: {value: ChartType.HISTOGRAM}});
+      expect(wrapper.instance().state.selectedColumn1).to.equal('');
+      expect(wrapper.instance().state.selectedColumn2).to.equal('');
+    });
+
+    it('clears filter value when filter column changes', () => {
+      let wrapper = shallow(<VisualizerModal {...DEFAULT_PROPS} />);
+      wrapper.instance().setState({
+        filterColumn: 'column',
+        filterValue: 'value'
+      });
+      expect(wrapper.instance().state.filterValue).to.equal('value');
+      wrapper
+        .find({displayName: 'Filter'})
+        .simulate('change', {target: {value: 'newColumn'}});
+      expect(wrapper.instance().state.filterValue).to.equal('');
+    });
   });
 
   describe('parseRecords', () => {
@@ -118,7 +149,7 @@ describe('VisualizerModal', () => {
         ]
       });
       wrapper.setState({
-        chartType: 'Bar Chart',
+        chartType: ChartType.BAR_CHART,
         selectedColumn1: 'name',
         filterColumn: 'age',
         filterValue: '8'
