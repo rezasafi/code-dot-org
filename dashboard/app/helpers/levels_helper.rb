@@ -25,7 +25,7 @@ module LevelsHelper
     elsif script_level.stage.lockable?
       script_lockable_stage_script_level_path(script_level.script, script_level.stage, script_level, params)
     elsif script_level.bonus
-      query_params = params.merge(id: script_level.id)
+      query_params = params.merge(level_name: script_level.level.name)
       script_stage_extras_path(script_level.script.name, script_level.stage.relative_position, query_params)
     else
       script_stage_script_level_path(script_level.script, script_level.stage, script_level, params)
@@ -606,7 +606,9 @@ module LevelsHelper
   end
 
   def match_answer_as_image(path, width)
-    "<img src='#{path.strip}' #{"width='#{width.strip}'" if width}></img>"
+    attrs = {src: path.strip}
+    attrs[:width] = width.strip if width
+    content_tag(:img, '', attrs)
   end
 
   def match_answer_as_embedded_blockly(path)
