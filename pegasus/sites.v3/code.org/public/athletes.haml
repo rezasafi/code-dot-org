@@ -58,6 +58,7 @@ video_player: true
 
 %h2.header
   = I18n.t(:speak_another_language)
+  = Script.count
   %a{href: "/translate"}= I18n.t(:help_translate)
 
 .inspire-videos{style: "clear: both;"}
