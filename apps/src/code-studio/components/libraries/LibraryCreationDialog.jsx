@@ -65,6 +65,7 @@ class LibraryCreationDialog extends React.Component {
 
   onOpen = () => {
     libraryLoader.load(
+      this.props.clientApi,
       () => this.setState({dialogState: DialogState.CODE_ERROR}),
       () => this.setState({dialogState: DialogState.NO_FUNCTIONS}),
       libraryDetails =>
