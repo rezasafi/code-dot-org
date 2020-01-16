@@ -50,7 +50,9 @@ export function load(clientApi, onCodeError, onMissingFunctions, onSuccess) {
 
     let description = '';
     let selectedFunctions = {};
+    let alreadyPublished = false;
     if (publishedLibrary) {
+      alreadyPublished = true;
       description = publishedLibrary.description;
       projectName = publishedLibrary.name;
       publishedLibrary.functions.forEach(publishedFunction => {
@@ -70,7 +72,8 @@ export function load(clientApi, onCodeError, onMissingFunctions, onSuccess) {
       libraryDescription: description,
       librarySource: librarySource,
       sourceFunctionList: functionsList,
-      selectedFunctions: selectedFunctions
+      selectedFunctions: selectedFunctions,
+      alreadyPublished: alreadyPublished
     });
   });
 }

@@ -40,6 +40,7 @@ export const DialogState = {
   LOADING: 'loading',
   DONE_LOADING: 'done_loading',
   PUBLISHED: 'published',
+  UNPUBLISHED: 'unpublished',
   CODE_ERROR: 'code_error',
   NO_FUNCTIONS: 'no_functions'
 };
@@ -127,6 +128,17 @@ class LibraryCreationDialog extends React.Component {
     );
   };
 
+  displayUnpublishSuccess = () => {
+    return (
+      <div>
+        <Heading2>
+          <b>{i18n.libraryUnPublishTitle()}</b>
+        </Heading2>
+        <p>{i18n.libraryUnPublishExplanation()}</p>
+      </div>
+    );
+  };
+
   displayContent = () => {
     return (
       <LibraryPublisher
@@ -135,6 +147,9 @@ class LibraryCreationDialog extends React.Component {
             dialogState: DialogState.PUBLISHED,
             libraryName: libraryName
           })
+        }
+        onUnpublishSuccess={() =>
+          this.setState({dialogState: DialogState.UNPUBLISHED})
         }
         libraryDetails={this.state.libraryDetails}
         clientApi={this.props.clientApi}
@@ -150,6 +165,9 @@ class LibraryCreationDialog extends React.Component {
         break;
       case DialogState.PUBLISHED:
         bodyContent = this.displaySuccess();
+        break;
+      case DialogState.UNPUBLISHED:
+        bodyContent = this.displayUnpublishSuccess();
         break;
       case DialogState.CODE_ERROR:
         bodyContent = this.displayError(i18n.libraryCodeError());
