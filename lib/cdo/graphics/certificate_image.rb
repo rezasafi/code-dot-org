@@ -164,7 +164,7 @@ def create_course_certificate_image(name, course=nil, sponsor=nil, course_title=
     sponsor = donor[:name_s]
   end
 
-  sponsor_message = "#{sponsor} made the generous gift to sponsor your learning."
+  sponsor_message = I18n.t('certificate.sponsor_message', sponsor_name: sponsor)
   apply_text!(image, sponsor_message, 18, 'Times bold', 'rgb(87,87,87)', 0, 447)
   image
 end
