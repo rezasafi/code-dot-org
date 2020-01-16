@@ -8,9 +8,6 @@ require_relative '../script_constants'
 # This method returns a newly-allocated Magick::Image object.
 # NOTE: the caller MUST ensure image#destroy! is called on the returned image object to avoid memory leaks.
 def create_certificate_image2(image_path, name, params={})
-  # The unmodified user input so we can document it error logs.
-  original_name = name
-
   # Load the certificate template
   background = Magick::Image.read(image_path).first
 
@@ -24,14 +21,23 @@ def create_certificate_image2(image_path, name, params={})
   # image.
   name = name[0, 50] if name.size > 50
 
+  font = "Times bold"
+  color = "#575757"
+  pointsize = 68
+  x_offset = params[:x] || 0
+  y_offset = params[:y] || 0
+  apply_text!(background, name, pointsize, font, color, x_offset, y_offset)
+  background
+end
+
+def apply_text!(image, text, pointsize, font, color, x_offset, y_offset)
   begin
-    # The user's name will be put into an image with a transparent background.
-    # This uses 'pango', the OS's text layout engine, in order to dynamically
-    # select the correct font. This is important for handling non-latin
-    # languages.
-    name_overlay = Magick::Image.read("pango:#{name}") do
-      # pango:markup is set to false in order to easily prevent pango markup injection
-      # from student names.
+    # The text will be put into an image with a transparent background.  This
+    # uses 'pango', the OS's text layout engine, in order to dynamically select
+    # the correct font. This is important for handling non-latin languages.
+    text_overlay = Magick::Image.read("pango:#{text}") do
+      # pango:markup is set to false in order to easily prevent pango markup
+      # injection from user input.
       define('pango', 'markup', false)
       self.background_color = 'none'
       self.pointsize = 68
@@ -39,29 +45,24 @@ def create_certificate_image2(image_path, name, params={})
       self.fill = "#575757"
     end.first.trim!
   rescue Magick::ImageMagickError => exception
-    # We want to know what kinds of names we are failing to render.
+    # We want to know what kinds of text we are failing to render.
     Honeybadger.notify(
       exception,
       context: {
         image_path: image_path,
-        name: name,
-        original_name: original_name,
+        text: text,
       }
     )
-    # The student gave us a name we can't render, so leave the name blank.
-    return background
+    # We can't render the text, so return without applying a transformation.
+    return
   end
 
-  # x,y offsets
-  y = params[:y] || 0
-  x = params[:x] || 0
-  # Combine the name image on top of the certificate template image
-  background.composite!(name_overlay, Magick::CenterGravity, x, y, Magick::OverCompositeOp)
+  # Combine the text image on top of the certificate template image
+  image.composite!(text_overlay, Magick::CenterGravity, x_offset, y_offset, Magick::OverCompositeOp)
 
   # Free the memory in order to avoid memory leaks (images are stored in /tmp
   # until destroyed)
-  name_overlay.destroy!
-  background
+  text_overlay.destroy!
 end
 
 # This method returns a newly-allocated Magick::Image object.
@@ -79,6 +80,7 @@ def create_workshop_certificate_image(image_path, fields)
     width = field[:width] || background.columns
     height = field[:height] || background.rows
 
+    # DAYNE get rid of ANNOTATE
     draw.annotate(background, width, height, x, y, string) do
       draw.gravity = Magick::CenterGravity
       self.pointsize = field[:pointsize] || 90
@@ -134,6 +136,7 @@ def create_course_certificate_image(name, course=nil, sponsor=nil, course_title=
 
     # student name
     name_vertical_offset = 445
+    # DAYNE get rid of ANNOTATE
     Magick::Draw.new.annotate(image, 0, 0, 0, name_vertical_offset, name) do
       self.gravity = Magick::NorthGravity
       self.pointsize = 96
@@ -144,6 +147,7 @@ def create_course_certificate_image(name, course=nil, sponsor=nil, course_title=
     end
 
     course_vertical_offset = 610
+    # DAYNE get rid of ANNOTATE
     Magick::Draw.new.annotate(image, 0, 0, 0, course_vertical_offset, course_title) do
       self.gravity = Magick::NorthGravity
       self.pointsize = 60
@@ -160,6 +164,7 @@ def create_course_certificate_image(name, course=nil, sponsor=nil, course_title=
     sponsor = donor[:name_s]
   end
 
+  # DAYNE get rid of ANNOTATE
   Magick::Draw.new.annotate(image, 0, 0, 0, 160, "#{sponsor} made the generous gift to sponsor your learning.") do
     self.gravity = Magick::SouthGravity
     self.pointsize = 24
