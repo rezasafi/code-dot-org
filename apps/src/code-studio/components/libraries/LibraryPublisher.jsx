@@ -91,7 +91,6 @@ export default class LibraryPublisher extends React.Component {
       libraryDescription
     );
 
-    // TODO: Display final version of error and success messages to the user.
     this.props.clientApi.publish(
       libraryJson,
       error => {
