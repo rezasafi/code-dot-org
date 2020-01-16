@@ -40,9 +40,9 @@ def apply_text!(image, text, pointsize, font, color, x_offset, y_offset)
       # injection from user input.
       define('pango', 'markup', false)
       self.background_color = 'none'
-      self.pointsize = 68
-      self.font = "Times bold"
-      self.fill = "#575757"
+      self.pointsize = pointsize
+      self.font = font
+      self.fill = color
     end.first.trim!
   rescue Magick::ImageMagickError => exception
     # We want to know what kinds of text we are failing to render.
@@ -164,15 +164,8 @@ def create_course_certificate_image(name, course=nil, sponsor=nil, course_title=
     sponsor = donor[:name_s]
   end
 
-  # DAYNE get rid of ANNOTATE
-  Magick::Draw.new.annotate(image, 0, 0, 0, 160, "#{sponsor} made the generous gift to sponsor your learning.") do
-    self.gravity = Magick::SouthGravity
-    self.pointsize = 24
-    self.font_family = 'Times'
-    self.font_weight = Magick::BoldWeight
-    self.stroke = 'none'
-    self.fill = 'rgb(87,87,87)'
-  end
+  sponsor_message = "#{sponsor} made the generous gift to sponsor your learning."
+  apply_text!(image, sponsor_message, 18, 'Times bold', 'rgb(87,87,87)', 0, 447)
   image
 end
 
