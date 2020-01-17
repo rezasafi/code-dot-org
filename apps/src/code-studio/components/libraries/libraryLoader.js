@@ -2,7 +2,12 @@
 import libraryParser from './libraryParser';
 import annotationList from '@cdo/apps/acemode/annotationList';
 
-export function load(clientApi, onCodeError, onMissingFunctions, onSuccess) {
+export async function load(
+  clientApi,
+  onCodeError,
+  onMissingFunctions,
+  onSuccess
+) {
   var error = annotationList.getJSLintAnnotations().find(annotation => {
     return annotation.type === 'error';
   });
@@ -34,7 +39,7 @@ export function load(clientApi, onCodeError, onMissingFunctions, onSuccess) {
     );
   });
 
-  Promise.all([getSource, getLibrary]).then(() => {
+  await Promise.all([getSource, getLibrary]).then(() => {
     let functionsList = libraryParser.getFunctions(sourceAndHtml.source);
     if (!functionsList || functionsList.length === 0) {
       onMissingFunctions();
