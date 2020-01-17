@@ -133,29 +133,8 @@ def create_course_certificate_image(name, course=nil, sponsor=nil, course_title=
     course_title ||= fallback_course_title_for(course)
 
     image = Magick::Image.read(path).first
-
-    # student name
-    name_vertical_offset = 445
-    # DAYNE get rid of ANNOTATE
-    Magick::Draw.new.annotate(image, 0, 0, 0, name_vertical_offset, name) do
-      self.gravity = Magick::NorthGravity
-      self.pointsize = 96
-      self.font_family = 'Helvetica'
-      self.font_weight = Magick::BoldWeight
-      self.stroke = 'none'
-      self.fill = 'rgb(118,101,160)' # purple
-    end
-
-    course_vertical_offset = 610
-    # DAYNE get rid of ANNOTATE
-    Magick::Draw.new.annotate(image, 0, 0, 0, course_vertical_offset, course_title) do
-      self.gravity = Magick::NorthGravity
-      self.pointsize = 60
-      self.font_family = 'Helvetica'
-      self.font_weight = Magick::BoldWeight
-      self.stroke = 'none'
-      self.fill = 'rgb(29, 173, 186)' # teal
-    end
+    apply_text!(image, name, 75, 'Helvetica bold', 'rgb(118,101,160)', 0, -141)
+    apply_text!(image, course_title, 47, 'Helvetica bold', 'rgb(29,173,186)', 0, 11)
   end
 
   unless sponsor
