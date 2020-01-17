@@ -87,17 +87,17 @@ class LibraryCreationDialog extends React.Component {
     document.execCommand('copy');
   };
 
-  displayError = errorMessage => {
+  displayError(errorMessage) {
     return <div>{errorMessage}</div>;
-  };
+  }
 
-  displayLoadingState = () => {
+  displayLoadingState() {
     return (
       <div style={styles.centerContent}>
         <Spinner />
       </div>
     );
-  };
+  }
 
   displaySuccess = () => {
     return (
@@ -128,7 +128,7 @@ class LibraryCreationDialog extends React.Component {
     );
   };
 
-  displayUnpublishSuccess = () => {
+  displayUnpublishSuccess() {
     return (
       <div>
         <Heading2>
@@ -137,7 +137,7 @@ class LibraryCreationDialog extends React.Component {
         <p>{i18n.libraryUnPublishExplanation()}</p>
       </div>
     );
-  };
+  }
 
   displayContent = () => {
     return (
@@ -173,7 +173,7 @@ class LibraryCreationDialog extends React.Component {
         bodyContent = this.displayError(i18n.libraryCodeError());
         break;
       case DialogState.NO_FUNCTIONS:
-        bodyContent = this.displayError(i18n.libraryNoFunctonsError());
+        bodyContent = this.displayError(i18n.libraryNoFunctionsError());
         break;
       default:
         bodyContent = this.displayContent();
